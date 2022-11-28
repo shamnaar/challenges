@@ -1,7 +1,7 @@
 resource "azurerm_network_security_group" "web-nsg" {
   name                = "web-nsg"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
   
   security_rule {
     name                       = "ssh-rule-1"
@@ -36,7 +36,7 @@ resource "azurerm_subnet_network_security_group_association" "web-nsg-subnet" {
 resource "azurerm_network_security_group" "db-nsg" {
     name = "db-nsg"
     location = var.location
-    resource_group_name = data.azurerm_resource_group.rg.name
+    resource_group_name = azurerm_resource_group.rg.name
 
     security_rule {
         name = "SQLInbound"

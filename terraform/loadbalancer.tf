@@ -1,14 +1,14 @@
 resource "azurerm_public_ip" "publicip" {
   name                = "PublicIPForLB"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
 }
 
 resource "azurerm_lb" "lb" {
   name                = "test-lb"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
 
   frontend_ip_configuration {
     name                          = "PublicIPAddress"
@@ -24,7 +24,7 @@ resource "azurerm_lb_backend_address_pool" "bepool" {
 resource "azurerm_network_interface" "nic" {
   name                = "test-nic"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
 
   ip_configuration {
     name                          = "testconfiguration"

@@ -1,3 +1,3 @@
-data "azurerm_resource_group" "rg" {
-  name     = "test-rg"
+resource "azurerm_resource_group" "rg" {
+  name     = var.res
 }

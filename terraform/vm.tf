@@ -1,12 +1,12 @@
 resource "azurerm_availability_set" "web_availabilty_set" {
   name                = "web_availabilty_set"
   location            = var.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_network_interface" "web-net-interface" {
     name = "web-network"
-    resource_group_name = data.azurerm_resource_group.rg.name
+    resource_group_name = azurerm_resource_group.rg.name
     location = var.location
 
     ip_configuration{
@@ -19,7 +19,7 @@ resource "azurerm_network_interface" "web-net-interface" {
 resource "azurerm_virtual_machine" "web-vm" {
   name = "web-vm"
   location = var.location
-  resource_group_name = data.azurerm_resource_group.rg.name
+  resource_group_name = azurerm_resource_group.rg.name
   network_interface_ids = [ azurerm_network_interface.web-net-interface.id ]
   availability_set_id = azurerm_availability_set.web_availabilty_set.id
   vm_size = "Standard_D2s_v3"

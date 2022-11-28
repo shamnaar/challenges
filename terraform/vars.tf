@@ -1,6 +1,8 @@
-# variable "resource_group" {}
+variable "resource_group" {
+  default = "test-rg"
+}
 variable "location" {
-    default = "japaneast"
+    default = "eastus"
 }
 variable "subscription_id" {
   type    = string
@@ -25,13 +27,13 @@ variable "web_username" {
     default = "webadmin"
 }
 variable "web_os_password" {
-    default = "webadminp@ssw0rd983"
+    default = "<password>"
 }
 
 variable "database_admin" {
-    default = "sqladmin667"
+    default = "sqladmin"
 }
 
 variable "database_password" {
-    default = "sqlp@ssworDadmin973"
+    default = "<password>"
 }
