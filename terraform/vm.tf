@@ -43,11 +43,16 @@ resource "azurerm_virtual_machine" "web-vm" {
     computer_name = var.web_host_name
     admin_username = var.web_username
     admin_password = var.web_os_password
+    custom_data    = file("azure-user-data.sh")
   }
 
   os_profile_linux_config {
     disable_password_authentication = false
   }
+}
+# Data template Bash bootstrapping file
+data "template_file" "linux-vm-cloud-init" {
+  template = file("azure-user-data.sh")
 }
 
 

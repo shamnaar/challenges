@@ -1,8 +1,8 @@
-variable "resource_group" {
-  default = "test-rg"
-}
+# variable "resource_group" {
+#   default = "test-rg"
+# }
 variable "location" {
-    default = "eastus"
+    default = "japaneast"
 }
 variable "subscription_id" {
   type    = string
@@ -24,16 +24,16 @@ variable "web_host_name"{
     default = "webserver"
 }
 variable "web_username" {
-    default = "webadmin"
+  type = string
 }
 variable "web_os_password" {
-    default = "<password>"
+    type = string
 }
 
 variable "database_admin" {
-    default = "sqladmin"
+  type = string
 }
 
 variable "database_password" {
-    default = "<password>"
+  type = string
 }
